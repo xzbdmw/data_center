@@ -19,7 +19,7 @@ async def okx_get(symbol):
     })
     exchange.aiohttp_proxy = 'http://127.0.0.1:7890'
     exchange.wsProxy = 'http://127.0.0.1:7890'
-    markets = await exchange.load_markets()
+    await exchange.load_markets()
     try:
         ticker = await exchange.watchTicker(symbol)
         fee = await exchange.fetch_trading_fee(symbol)
@@ -47,7 +47,7 @@ async def huobi_get(symbol):
     })
     exchange.aiohttp_proxy = 'http://127.0.0.1:7890'
     exchange.wsProxy = 'http://127.0.0.1:7890'
-    markets = await exchange.load_markets()
+    await exchange.load_markets()
     try:
         ticker = await exchange.fetchTicker(symbol)
         fee = await exchange.fetch_trading_fee(symbol)

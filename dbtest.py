@@ -5,14 +5,14 @@ import time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-INFLUXDB_TOKEN = "M-f5Eha2b4Egx-73BjOkqkhwyZsel4PG3AqF9r-MzQp7QEozDgYL771hCAZ4dZJ_YezUVnblVDCkPuBFcGzwTA=="
+INFLUXDB_TOKEN = "fUUrjmy6GXYfjGVz52AlNTs4eANkZPeLEakvPEtTVgabkB_Oqz5yFlzb9brc_6PFM_2b22Wg566BLP44zj9u5w=="
 token = INFLUXDB_TOKEN
 org = "fzu"
 url = "http://localhost:8086"
 
 client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
 
-bucket = "usdt"
+bucket = "init"
 
 write_api = client.write_api(write_options=SYNCHRONOUS)
 
@@ -24,9 +24,9 @@ ticker_dict_swap = {}
 async def okx_get(symbol_spot, symbol_swap):
     exchange = ccxt.pro.okx(
         {
-            "apiKey": "15b54e09-26b7-4777-9cfb-e69f6f5d85b4",
-            "secret": "DAEF6B729F87A05C9107EAB4E84D1282",
-            "password": "Hde20020104!",
+            "apiKey": "65761dd7-8e33-4980-a58d-1790cfe3c980",
+            "secret": "086DC87C79782387AED58AF0F231EA62",
+            "password": "Xzb011026.",
             "options": {
                 "watchOrderBook": {
                     "depth": "bbo-tbt",  # tick-by-tick best bidask
@@ -46,7 +46,7 @@ async def okx_get(symbol_spot, symbol_swap):
             {"instType": "SWAP", "instId": symbol_swap + "-SWAP"}
         )
         swap = bbo["data"][0]
-        # print(swap)
+        print(swap)
         ticker_dict_spot["okx"] = {
             "symbol": symbol_spot,
             "datetime": ticker["datetime"],
@@ -65,7 +65,7 @@ async def okx_get(symbol_spot, symbol_swap):
             "bidVolume": float(swap["bidSz"]),
             "fee": (-1) * float(fee_swap["info"]["takerU"]),
         }
-        # print(fee['maker'])
+        print(fee["maker"])
         point = (
             Point("okx_spot")
             .tag("exchange", "okx" + symbol_spot)

@@ -6,9 +6,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 import ccxt.pro
 
-INFLUXDB_TOKEN = "XDVaHsvV7ZzsGsChrprdaYJWLoozLk2LYPHHL7Cqu-bJxhLDR5qDa9KsjRpXmOOk4w_rRn8kf1UpRXsRGTuuNg=="
-
-
+INFLUXDB_TOKEN = "fUUrjmy6GXYfjGVz52AlNTs4eANkZPeLEakvPEtTVgabkB_Oqz5yFlzb9brc_6PFM_2b22Wg566BLP44zj9u5w=="
 token = INFLUXDB_TOKEN
 org = "fzu"
 url = "http://localhost:8086"
